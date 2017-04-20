@@ -1,0 +1,22 @@
+
+<%= image_tag @user.image.url, {height: 350} %>
+<br>
+  <%= @user.first_name %>
+  <%= @user.last_name %>
+</br>
+
+
+<%= form_for @post, url: posts_path, html: { multipart: true } do |form| %>
+  <%= form.label :content %>
+  <%= form.text_field :content %><br>
+
+  <%= form.submit 'Post' %>
+<% end %>
+
+
+<% @posts.each do |post| %>
+  <p>
+    <%= post.content %>&nbsp;&nbsp;&nbsp;
+    <%= link_to "Make it go away:)", post_path(post), method: :delete %>
+  </p>
+<% end %>
